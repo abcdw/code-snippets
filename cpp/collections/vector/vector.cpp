@@ -53,10 +53,26 @@ public:
     TVector()
     {}
 
+    TVector(size_t, T = T())
+    {}
+
+    TVector(iterator, iterator)
+    {}
+
+    TVector(const TVector&)
+    {}
+
+    TVector(TVector &&)
+    {}
+
+    TVector(std::initializer_list<T>)
+    {}
+
     virtual ~TVector();
 
 private:
-    /* data */
+    T* data;
+    size_t vectorSize, elementCount;
 };
 
 
