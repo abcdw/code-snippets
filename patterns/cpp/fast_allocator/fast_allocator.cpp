@@ -13,7 +13,7 @@ public:
 private:
 };
 
-template <> 
+template <>
 class fast_allocator<void> {
 public:
     typedef void* pointer;
