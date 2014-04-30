@@ -1,3 +1,3 @@
 C++ patterns
 =====
-* fast allocator
+* fast/fixed allocator
