@@ -10,6 +10,7 @@ template < class T, class Alloc = allocator<T> >
 class TVector
 {
 private:
+    static const size_t MAX_SIZE = 1073741823;
 
     template < bool isConst = false >
     class MyIterator : public std::iterator<std::random_access_iterator_tag, T>
@@ -52,8 +53,11 @@ private:
         pointer p;
     };
 
+    typedef size_t size_type;
+
     T* data;
-    size_t vectorSize, elementCount;
+    size_type vectorSize, vectorCapacity;
+
 public:
     typedef T value_type;
     typedef allocator<T> allocator_type;
@@ -63,12 +67,14 @@ public:
     typedef typename allocator_type::const_pointer const_pointer;
     typedef MyIterator<false> iterator;
     typedef MyIterator<true> const_iterator;
+    typedef typename
+        std::iterator_traits<iterator>::difference_type difference_type;
 
 
     TVector()
     {}
 
-    TVector(size_t, T = T())
+    TVector(size_type, T = T())
     {}
 
     TVector(iterator, iterator)
@@ -83,6 +89,19 @@ public:
     TVector(std::initializer_list<T>)
     {}
 
+    size_type size() {
+        return vectorSize;
+    }
+
+    size_type capacity() {
+        return vectorCapacity;
+    }
+
+    bool empty() {
+        return vectorSize == 0;
+    }
+
+    void resize(size_type n);
     virtual ~TVector();
 };
 
@@ -95,7 +114,7 @@ int main()
     t[1] = 3;
     TVector<int>::iterator it;
     it = &t[1];
-    TVector<int>::const_iterator cit = it;
+    //TVector<int>::const_iterator cit = it;
     //std::vector<int>::iterator itt;
     //std::vector<int>::const_iterator cit = itt;
 
