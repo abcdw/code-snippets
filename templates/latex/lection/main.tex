@@ -1,0 +1,51 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage[unicode,colorlinks=true,linkcolor=blue]{hyperref}
+% здесь подключении шрифтов в русскими буквами
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,mathtext,cite,enumerate,float}
+%\usepackage[dvips]{graphicx}
+\usepackage[pdftex]{graphicx}
+\graphicspath{{images/}}
+\usepackage{fix-cm}
+
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1.}
+\makeatother
+
+\usepackage{geometry}  % Меняем поля страницы
+\geometry{left=2cm}    % левое поле
+\geometry{right=1.5cm} % правое поле
+\geometry{top=1cm}     % верхнее поле
+\geometry{bottom=2cm}  % нижнее поле
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\renewcommand{\theenumi}{\arabic{enumi}}                                       % Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumi}{\arabic{enumi}}                                     % Меняем везде перечисления на цифра.цифра
+\renewcommand{\theenumii}{.\arabic{enumii}}                                    % Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}                   % Меняем везде перечисления на цифра.цифра
+\renewcommand{\theenumiii}{.\arabic{enumiii}}                                  % Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.} % Меняем везде перечисления на цифра.цифра
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\theoremstyle{remark}
+\newtheorem*{example}{Пример}
+\newtheorem*{remark}{Замечание}
+
+
+\begin{document}
+  \input{title}
+  \tableofcontents
+
+  \part{}
+  %\input{ch1}
+
+\end{document}
+
