@@ -18,7 +18,7 @@ void run_something(int argc, char *argv[])
         args[i - 1] = argv[i];
     }
 
-    execvp("ls", args);
+    execvp(argv[1], args);
     free(args);
 }
 
