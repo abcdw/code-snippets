@@ -7,6 +7,7 @@
 void run_something(int argc, char *argv[])
 {
     int i;
+
     if (argc < 2) {
         fprintf(stderr, "usage ./myexec program [some args]\n");
         exit(EXIT_FAILURE);
@@ -14,11 +15,19 @@ void run_something(int argc, char *argv[])
 
     char **args = (char **)malloc(sizeof(char *) * (argc - 1));
 
+    if (args == NULL) {
+        perror("malloc failed");
+        exit(EXIT_FAILURE);
+    }
+
     for (i = 1; i < argc; ++i) {
         args[i - 1] = argv[i];
     }
 
     execvp(argv[1], args);
+
+    fprintf(stderr, "no such program\n");
+
     free(args);
 }
 
